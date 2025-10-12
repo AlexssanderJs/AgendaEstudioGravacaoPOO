@@ -1,0 +1,89 @@
+# ===== .NET / C# =====
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.rsuser
+
+# Build artefacts
+*.dll
+*.exe
+*.app
+*.pdb
+*.cache
+*.tmp
+*.bak
+*.dbmdl
+*.log
+*.vspscc
+*.vssscc
+*.nupkg
+*.snupkg
+
+# NuGet Packages
+*.nuget/
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+project.assets.json
+artifacts/
+
+# Rider / VS / VS Code
+.idea/
+.vscode/
+.vs/
+
+# Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.coverage
+*.coveragexml
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Auto-generated config and cache
+*.swp
+*.tmp
+*.obj
+*.pch
+*.ilk
+*.meta
+*.tlog
+*.idb
+*.log
+*.psess
+*.vsp
+*.vsmdi
+*.ncb
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+
+# Other
+_ReSharper*/
+*_ReSharper.Caches/
+*.DotSettings.user
+
+# Local environment files
+.env
+*.local.json
+appsettings.Development.json
+
+# ===== Keep important project files =====
+!*.csproj
+!*.sln
+!README.md
+!.gitignore
