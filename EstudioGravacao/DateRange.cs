@@ -3,8 +3,8 @@ using System.Runtime.InteropServices.Marshalling;
 
 public class DateRange
 {
-    public DateTime Start { get; private set; }
-    public DateTime End { get; private set; }
+    public DateTime Start { get; }
+    public DateTime End { get;}
 
     public DateRange(DateTime start, DateTime end)
     {

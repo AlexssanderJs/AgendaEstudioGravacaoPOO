@@ -2,8 +2,8 @@
 
 public class StudioRoom
 {
-    public int Id { get; private set; }
-    public string Name { get; private set; }
+    public int Id { get;}
+    public string Name { get;}
 
     private readonly List<Session> _sessions = new List<Session>();
     public IReadOnlyCollection<Session> Sessions => _sessions;

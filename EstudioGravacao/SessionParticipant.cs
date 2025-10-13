@@ -1,20 +1,21 @@
 using System.Dynamic;
 
-public class SessionParticipant
+public partial class SessionParticipant
 {
-    public enum Instrument
-    {
-        Guitar,
-        Drums,
-        Bass,
-        Keyboard,
-        Vocals
-    }
+    public Musician Participant { get; }
+    public InstrumentType Instrument { get; }
+    public SessionRole Role { get; }
 
-    public enum Role
+    internal SessionParticipant(Musician participant, InstrumentType instrument, SessionRole role)
     {
-        Lead,
-        Support,
-        Guest
+        if (participant is null)
+        {
+            throw new ArgumentException("O participante deve ter uma referência a um Músico válido.");
+        }
+
+        this.Participant = participant;
+        this.Instrument = instrument;
+        this.Role = role;
     }
+    
 }
