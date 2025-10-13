@@ -5,8 +5,9 @@ public partial class SessionParticipant
     public Musician Participant { get; }
     public InstrumentType Instrument { get; }
     public SessionRole Role { get; }
+    public DateTime? ArrivalTime { get; }
 
-    internal SessionParticipant(Musician participant, InstrumentType instrument, SessionRole role)
+    internal SessionParticipant(Musician participant, InstrumentType instrument, SessionRole role, DateTime? arrivalTime)
     {
         if (participant is null)
         {
@@ -16,6 +17,7 @@ public partial class SessionParticipant
         this.Participant = participant;
         this.Instrument = instrument;
         this.Role = role;
+        this.ArrivalTime = arrivalTime;
     }
     
 }
