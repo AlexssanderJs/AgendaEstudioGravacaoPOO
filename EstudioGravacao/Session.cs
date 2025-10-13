@@ -1,9 +1,5 @@
-using System.ComponentModel;
-using System.Diagnostics.Metrics;
-
 public class Session
 {
-    internal static bool any;
 
     public int Id { get; }
     public StudioRoom Room { get; }
@@ -12,26 +8,16 @@ public class Session
     private readonly List<SessionParticipant> _participants = new List<SessionParticipant>();
     public IReadOnlyCollection<SessionParticipant> Participants => _participants;
 
-    public Session(int id, StudioRoom room, DateRange timerange)
+    public Session(int id, StudioRoom room, DateRange timeRange)
     {
         if (id <= 0)
         {
             throw new ArgumentException("O ID tem que ser maior que 0");
         }
 
-        if (room is null)
-        {
-            throw new ArgumentException("A sessão deve ter uma sala (StudioRoom)");
-        }
-
-        if (timerange is null)
-        {
-            throw new ArgumentException("A sessão deve ter intervalo de tempo definido");
-        }
-
-        this.Id = id;
-        this.Room = room;
-        this.TimeRange = timerange;
+        Room = room ?? throw new ArgumentNullException(nameof(room));
+        TimeRange = timeRange ?? throw new ArgumentNullException(nameof(timeRange));
+        Id = id;
     }
 
     public void AddParticipant(

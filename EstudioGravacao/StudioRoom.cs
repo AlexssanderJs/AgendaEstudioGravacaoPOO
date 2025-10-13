@@ -10,7 +10,7 @@ public class StudioRoom
 
     public StudioRoom(int id, string name)
     {
-        if (string.IsNullOrWhiteSpace(name.Trim()))
+        if (string.IsNullOrWhiteSpace(name))
         {
             throw new ArgumentException("Nome não pode ser nulo.");
         }
@@ -25,6 +25,16 @@ public class StudioRoom
 
     public void Schedule(Session novaSessao)
     {
+        if (novaSessao is null)
+        {
+            throw new ArgumentNullException(nameof(novaSessao));
+        }
+
+        if (!ReferenceEquals(novaSessao.Room, this))
+        {
+            throw new InvalidOperationException("A sessão deve pertencer a esta sala de estúdio.");
+        }
+
         if (_sessions.Any(sessaoExistente => DateRange.Overlaps(sessaoExistente.TimeRange, novaSessao.TimeRange)))
         {
             throw new InvalidOperationException("Ja existe uma sessão agendada que colide com o horario solicitado");
