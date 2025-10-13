@@ -1,4 +1,4 @@
-using System.Dynamic;
+namespace RecordingStudio.Domain;
 
 public partial class SessionParticipant
 {
@@ -11,13 +11,13 @@ public partial class SessionParticipant
     {
         if (participant is null)
         {
-            throw new ArgumentException("O participante deve ter uma referência a um Músico válido.");
+            throw new ArgumentNullException(nameof(participant));
         }
 
-        this.Participant = participant;
-        this.Instrument = instrument;
-        this.Role = role;
-        this.ArrivalTime = arrivalTime;
+        Participant = participant;
+        Instrument = instrument;
+        Role = role;
+        ArrivalTime = arrivalTime;
     }
-    
+
 }

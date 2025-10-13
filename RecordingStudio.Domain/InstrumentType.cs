@@ -1,5 +1,6 @@
-public partial class SessionParticipant
+namespace RecordingStudio.Domain;
 
+public partial class SessionParticipant
 {
     public enum InstrumentType
     {

@@ -1,9 +1,11 @@
+namespace RecordingStudio.Domain;
+
 public class UnionCard
 {
     public string Number { get; }
     public DateTime Expiration { get; }
 
-    public UnionCard (string number, DateTime expiration)
+    public UnionCard(string number, DateTime expiration)
     {
         if (string.IsNullOrWhiteSpace(number))
         {

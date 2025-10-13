@@ -1,3 +1,5 @@
+namespace RecordingStudio.Domain;
+
 public class Session
 {
 

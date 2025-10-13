@@ -1,9 +1,9 @@
-
+namespace RecordingStudio.Domain;
 
 public class StudioRoom
 {
-    public int Id { get;}
-    public string Name { get;}
+    public int Id { get; }
+    public string Name { get; }
 
     private readonly List<Session> _sessions = new List<Session>();
     public IReadOnlyCollection<Session> Sessions => _sessions;
@@ -56,7 +56,7 @@ public class StudioRoom
 
     }
 
-     public override bool Equals(object? obj)
+    public override bool Equals(object? obj)
     {
         if (obj is not StudioRoom other)
         {
@@ -70,5 +70,5 @@ public class StudioRoom
     {
         return Id.GetHashCode();
     }
-    
+
 }

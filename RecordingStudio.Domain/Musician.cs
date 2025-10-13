@@ -1,10 +1,12 @@
+namespace RecordingStudio.Domain;
+
 public class Musician
 {
     public int Id { get; }
     public string FullName { get; }
     public string? StageName { get; }
 
-    public UnionCard? UnionCard { get; private set;}
+    public UnionCard? UnionCard { get; private set; }
 
     public Musician(int id, string fullName, string? stageName)
     {
@@ -39,7 +41,7 @@ public class Musician
 
         this.UnionCard = newCard;
     }
-    
+
     public override bool Equals(object? obj)
     {
         if (obj is not Musician other)
