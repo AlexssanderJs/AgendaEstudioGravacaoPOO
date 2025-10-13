@@ -1,10 +1,16 @@
+using System.ComponentModel;
+using System.Diagnostics.Metrics;
+
 public class Session
 {
     internal static bool any;
 
-    public int Id { get; private set; }
-    public StudioRoom Room { get; private set; }
-    public DateRange TimeRange { get; private set; }
+    public int Id { get; }
+    public StudioRoom Room { get; }
+    public DateRange TimeRange { get;  }
+
+    private readonly List<SessionParticipant> _participants = new List<SessionParticipant>();
+    public IReadOnlyCollection<SessionParticipant> Participants => _participants;
 
     public Session(int id, StudioRoom room, DateRange timerange)
     {
@@ -28,8 +34,38 @@ public class Session
         this.TimeRange = timerange;
     }
 
-    internal static bool Any(Func<object, bool> value)
+    public void AddParticipant(Musician participant, SessionParticipant.InstrumentType instrument, SessionParticipant.SessionRole role)
     {
-        throw new NotImplementedException();
+        if (_participants.Any(p => p.Participant.Id == participant.Id))
+        {
+            throw new InvalidOperationException($"O músico com ID {participant.Id} já está adicionado nesta sessão.");
+        }
+
+        var newParticipant = new SessionParticipant(participant, instrument, role);
+        _participants.Add(newParticipant);
     }
+
+    public void EnsureHasAtLeastOneParticipant()
+    {
+        if(_participants.Count == 0)
+        {
+            throw new InvalidOperationException("A sessão deve ter pelo menos um músico participante.");
+        }
+    }
+
+     public override bool Equals(object? obj)
+    {
+        if (obj is not Session other)
+        {
+            return false;
+        }
+
+        return Id == other.Id;
+    }
+
+    public override int GetHashCode()
+    {
+        return Id.GetHashCode();
+    }
+
 }

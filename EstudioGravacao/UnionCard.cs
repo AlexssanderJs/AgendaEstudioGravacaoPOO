@@ -1,7 +1,7 @@
 public class UnionCard
 {
-    public string Number { get; private set; }
-    public DateTime Expiration { get; private set; }
+    public string Number { get; }
+    public DateTime Expiration { get; }
 
     public UnionCard (string number, DateTime expiration)
     {
